@@ -1,0 +1,19 @@
+version: "3"
+
+networks:
+  utils_base:
+    external: true
+
+services:
+  blockchain:
+    image: blockchain
+    build:
+      context: ./blockchain
+      dockerfile: Dockerfile
+    command:
+      - /bin/bash
+      - -c
+      - |
+        npx hardhat run --network ganache scripts/deploy.js
+    networks:
+      - utils_base

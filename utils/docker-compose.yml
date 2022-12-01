@@ -1,0 +1,14 @@
+version: "3"
+
+networks:
+  base:
+    driver: bridge
+
+services:
+  ganache:
+    image: trufflesuite/ganache-cli:v6.12.2
+    ports:
+      - 8545:8545
+    command: --mnemonic "toy echo orbit embrace opinion file client report history bomb regret life" --networkId 1337
+    networks:
+      - base
